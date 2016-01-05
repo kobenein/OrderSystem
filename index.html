@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>展顥訂餐系統</title>
+		<meta name="description" content="Source code generated using layoutit.com">
+		<meta name="author" content="LayoutIt!">
+		<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/static/css/style.css" rel="stylesheet">
+	</head>
+
+
+	<body style="background-color:#333;">
+	
+	
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
+    </ul>
+  </div>
+</nav>	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-5">
+					<br>
+					<img href="/" alt="AlcorVision" src="/static/img/AlcorVision.jpg">
+					<a href="/"><h3 class="text-left" style="color:white">展顥訂餐系統</h3></a>
+
+					{% if Post==True %}
+						<div class="alert alert-success">
+						<strong>你選擇了 {{Choise}}</strong>
+						</div>
+					{% end %}
+
+				</div>
+				<div class="col-md-4">
+					<br>
+					<a href="/log/" class="btn btn-info" role="button">log</a>
+					<a href="/static/img/menu.jpg" class="btn btn-info" role="button">menu</a>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-5">
+				 <h2 style="color:white">{{ weekday }}</h2>
+					<form role="form" action="/" method="post">
+						<label style="color:white;font-size:28px">Name: </label><input type="text" style="line-height:32px" name="Name" value={{ OrderUser }}><br>
+						{% for idx,d in enumerate(dinner) %}
+						<input type="radio" name="choise" value={{ idx+1 }}><label style="color:white;font-size:28px">　{{ d }}</label><br>
+						{% end %}
+						<input type="radio" name="choise" value=0><label style="color:red;font-size:28px">　取消今日點餐</label><br>
+						<button type="submit" class="btn btn-success" style="font-size:28px">送出</button>
+					</form>
+				</div>
+				<div class="col-md-4">
+
+
+  <table>
+    <tbody>
+      {% for Result in AllResult %}
+      <tr>
+        <td class="col-md-1" style="color:white;font-size:16px">{{ Result[0] }}</td>
+        <td class="col-md-2" style="color:white;font-size:16px">{{ Result[1] }}</td>
+      </tr>
+      {% end %}
+      {% for S in Summary %}
+      <tr>
+        <td class="col-md-1" style="color:white;font-size:16px">{{ S[0] }}</td>
+        <td class="col-md-2" style="color:white;font-size:16px">{{ S[1] }}</td>
+      </tr>
+      {% end %}
+    </tbody>
+  </table>
+
+
+
+
+				</div>
+			</div>
+		</div>
+		<script src="/static/js/jquery.min.js"></script>
+		<script src="/static/js/bootstrap.min.js"></script>
+		<script src="/static/js/scripts.js"></script>
+	</body>
+</html>
