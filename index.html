@@ -16,28 +16,21 @@
 	
 	
 <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
-    </ul>
-  </div>
-</nav>	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">WebSiteName</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#">Home</a></li>
+			<li><a href="#">Page 1</a></li>
+			<li><a href="#">Page 2</a></li>
+			<li><a href="#">Page 3</a></li>
+		</ul>
+	</div>
+</nav>
+
+
+
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-3"></div>
@@ -64,7 +57,13 @@
 			<div class="row">
 				<div class="col-md-3"></div>
 				<div class="col-md-5">
-				 <h2 style="color:white">{{ weekday }}</h2>
+				{% if dinner=="none" %}
+					<div class="alert alert-danger">
+					<strong style="font-size:28px">現在非訂餐時間<br>
+					19:00後可以訂隔日餐點
+					</strong>
+					</div>
+				{% else %}
 					<form role="form" action="/" method="post">
 						<label style="color:white;font-size:28px">Name: </label><input type="text" style="line-height:32px" name="Name" value={{ OrderUser }}><br>
 						{% for idx,d in enumerate(dinner) %}
@@ -73,26 +72,32 @@
 						<input type="radio" name="choise" value=0><label style="color:red;font-size:28px">　取消今日點餐</label><br>
 						<button type="submit" class="btn btn-success" style="font-size:28px">送出</button>
 					</form>
+				{% end %}
 				</div>
 				<div class="col-md-4">
 
 
-  <table>
-    <tbody>
-      {% for Result in AllResult %}
-      <tr>
-        <td class="col-md-1" style="color:white;font-size:16px">{{ Result[0] }}</td>
-        <td class="col-md-2" style="color:white;font-size:16px">{{ Result[1] }}</td>
-      </tr>
-      {% end %}
-      {% for S in Summary %}
-      <tr>
-        <td class="col-md-1" style="color:white;font-size:16px">{{ S[0] }}</td>
-        <td class="col-md-2" style="color:white;font-size:16px">{{ S[1] }}</td>
-      </tr>
-      {% end %}
-    </tbody>
-  </table>
+				<table class="table">
+					<tbody>
+						{% for Result in AllResult %}
+						<tr class="success">
+							<td class="col-md-1" style="font-size:16px">{{ Result[0] }}</td>
+							<td class="col-md-2" style="font-size:16px">{{ Result[1] }}</td>
+						</tr>
+						{% end %}
+					</tbody>
+				</table>
+				<br>
+				<table class="table">
+					<tbody>
+						{% for S in Summary %}
+						<tr class="info">
+							<td class="col-md-1" style="font-size:16px">{{ S[0] }}</td>
+							<td class="col-md-2" style="font-size:16px">{{ S[1] }}</td>
+						</tr>
+						{% end %}
+					</tbody>
+				</table>
 
 
 
