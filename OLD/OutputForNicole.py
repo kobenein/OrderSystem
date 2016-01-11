@@ -7,7 +7,7 @@ from Result import *
 
 ITA = IsTimeAvailable()
 
-logfile = ITA[ITA['filechoise']]
+logfile = ITA[ITA['filechoice']]
 
 
 AllResult = GetAllResult(logfile + '.txt')
@@ -15,7 +15,7 @@ Summary = GetSummary(AllResult)
 
 
 #====================================================================
-FileName = '便當訂購表格_{}.xlsx'.format(logfile)
+FileName = '展顥_便當訂購表格_{}.xlsx'.format(logfile)
 workbook = xlsxwriter.Workbook(FileName)
 worksheet = workbook.add_worksheet()
 worksheet.set_column(0, 0, 30)

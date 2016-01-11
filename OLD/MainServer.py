@@ -48,7 +48,7 @@ class IndexHandler(web.RequestHandler):
         else:
             dinner_list = 'none'
 
-        logfile = ITA[ITA['filechoise']]
+        logfile = ITA[ITA['filechoice']]
         
         AllResult = GetAllResult(logfile+'.txt')
         Summary = GetSummary(AllResult)
@@ -78,18 +78,18 @@ class IndexHandler(web.RequestHandler):
         
 
         OrderTime = strftime('%Y/%m/%d %a %H:%M:%S')
-        OrderChoise = int(self.get_argument('choise')) - 1 #from 0 -1:for cancel
+        OrderChoice = int(self.get_argument('choice')) - 1 #from 0 -1:for cancel
 
         OrderIp = self.request.remote_ip
         
         OrderUser = self.get_argument('Name')
         OrderUser = OrderUser if OrderUser else 'anonymous'
 
-        OrderMeal = dinner_list[OrderChoise] if OrderChoise>=0 else '取消今日點餐'
+        OrderMeal = dinner_list[OrderChoice] if OrderChoice>=0 else '取消今日點餐'
 
         Order = '{}; {}; {}; {}\n'.format(OrderTime,OrderMeal,OrderIp,OrderUser)
 
-        logfile = ITA[ITA['filechoise']]
+        logfile = ITA[ITA['filechoice']]
         with open(logfile+'.txt','a') as file:
             file.write(Order)
         with open('log.txt','a') as file:
@@ -99,7 +99,7 @@ class IndexHandler(web.RequestHandler):
         Summary = GetSummary(AllResult)
 
         self.render("index.html",
-                    dinner=dinner_list,Post=True,Choise=OrderMeal,
+                    dinner=dinner_list,Post=True,Choice=OrderMeal,
                     AllResult=AllResult,Summary=Summary,OrderUser=OrderUser)
         
 

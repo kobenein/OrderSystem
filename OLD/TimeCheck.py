@@ -34,12 +34,12 @@ def IsTimeAvailable(DL_Order='14:59:59',DL_View='18:59:59'):
    
     if TodayNow>TodayStart and TodayNow<TodayTag1:
         weekday_for_Order = TodayNow.tm_wday
-        filechoise = 'today'
+        filechoice = 'today'
 ##        print('可以訂今天的晚餐')
     elif TodayNow>TodayTag2 and TodayNow<TodayEnd:
         weekday_for_Order = TodayNow.tm_wday + 1
         weekday_for_Order = 0 if weekday_for_Order in [5,6] else weekday_for_Order
-        filechoise = 'tomorrow'
+        filechoice = 'tomorrow'
 ##        print('可以訂明天的晚餐')
     else:
         weekday_for_Order = None
@@ -47,20 +47,20 @@ def IsTimeAvailable(DL_Order='14:59:59',DL_View='18:59:59'):
     
     if TodayNow>TodayStart and TodayNow<TodayTag2:
         weekday_for_View = TodayNow.tm_wday
-        filechoise = 'today'
+        filechoice = 'today'
 ##        print('可以看今天的晚餐')
     elif TodayNow>TodayTag2 and TodayNow<TodayEnd:
         weekday_for_View = TodayNow.tm_wday + 1
         weekday_for_View = 0 if weekday_for_View in [5,6] else weekday_for_View
-        filechoise = 'tomorrow'
+        filechoice = 'tomorrow'
 ##        print('可以看明天的晚餐')
     else:
         weekday_for_View = TodayNow.tm_wday
-        filechoise = 'today'
+        filechoice = 'today'
 
 
     return {'weekday_for_Order':weekday_for_Order , 'weekday_for_View':weekday_for_View ,
-            'today':time.strftime('%Y-%m-%d(%a)') , 'tomorrow':tomorrow , 'filechoise':filechoise}
+            'today':time.strftime('%Y-%m-%d(%a)') , 'tomorrow':tomorrow , 'filechoice':filechoice}
 
 
 
